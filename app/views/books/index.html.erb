@@ -1,16 +1,17 @@
 <h1>Books</h1>
+
 <table>
   <tr>
     <th>Title</th>
     <th>Body</th>
   </tr>
-  <tr>
-    <td>リーダブルコード</td>
-    <td>より良いコードを書くためのシンプルで実践的なテクニック</td>
-    <td>Show</td>
-    <td>Edit</td>
-    <td>Destroy</td>
-  </tr>
+  <tr><% @book_lists.each do |book_list| %>
+    <td><%= book_list.title %></td>
+    <td><%= book_list.body %></td>
+    <td><%= link_to "Show",book_path(book_list.id) %></td>
+    <td><%= link_to "Edit",edit_book_path(book_list.id) %></td>
+    <td><%= link_to "Delete",book_path(book_list.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+  </tr><% end %>
 </table>
 
 <h2>New book</h2>
